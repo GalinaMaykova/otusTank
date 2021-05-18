@@ -36,4 +36,6 @@ int main()
     
     std::cout << "x-coordinata: " << (*(myVector*)(tank.getObj("Position"))).m_body[0] << std::endl;
     std::cout << "y-coordinata: " << (*(myVector*)(tank.getObj("Position"))).m_body[1] << std::endl;
+    int x;
+    std::cin >> x;
 }
