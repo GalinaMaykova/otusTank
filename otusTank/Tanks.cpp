@@ -5,11 +5,29 @@
 #include "myVector.h"
 #include "uobject.h"
 
-int main()
+#include "gmock\gmock.h"
+
+//
+//class MockA : public IMovable
+//{
+//public:
+//    MOCK_METHOD2(Method1, int(int a, int b));
+//};
+
+
+
+
+int main(int argc, char** argv)
 {
+
+    testing::InitGoogleMock(&argc, argv);
+    RUN_ALL_TESTS();
+
+
+
     std::vector<int> p(2);
     p[0] = 2;
-    p[1] = 7; //{2, 7}
+    p[1] = 7;
     myVector pos(p);
     std::vector<int> v(2);
     v[0] = 1;
