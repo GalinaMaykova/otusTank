@@ -1,9 +1,4 @@
-//#pragma once
-//#include "pch.h"
-#ifndef MY_VECTOR_H
-#define MY_VECTOR_H
-
-
+#pragma once
 #include <vector>;
 
 class myVector
@@ -27,4 +22,3 @@ public:
     std::vector<int> m_body;
 };
 
-#endif //MY_VECTOR_H

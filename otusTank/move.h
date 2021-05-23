@@ -1,8 +1,4 @@
-//#pragma once
-//#include "pch.h"
-
-#ifndef MOVE_H
-#define MOVE_H
+#pragma once
 
 #include "myVector.h"
 #include "uobject.h"
@@ -17,29 +13,30 @@ public:
     virtual ~IMovable() { std::cout << "IMovableDestructor" << std::endl; };
 };
 
+
 class MovableAdapter : public IMovable
 {
 public:
 
-    MovableAdapter(UObject obj) :m_obj(obj)
+    MovableAdapter(UObject& obj) :m_obj(obj)
     {}
 
     myVector getPosition()
     {
-        return *((myVector*)m_obj.getObj("Position"));
+        return  std::any_cast<myVector>(m_obj.getObj("Position"));
     }
 
     void setPosition(myVector value)
     {
-        *((myVector*)m_obj.getObj("Position")) = value;
+       m_obj.getObj("Position") = value;
     }
     myVector getVelocity()
     {
-        return *((myVector*)m_obj.getObj("Velosity"));
+        return std::any_cast<myVector>(m_obj.getObj("Velosity"));
     }
 
 private:
-        UObject m_obj;
+        UObject& m_obj;
 };
 
 class MoveCommand : public Command
@@ -57,4 +54,3 @@ public:
 private:
     IMovable& m_movable;
 };
-#endif // MOVE_H

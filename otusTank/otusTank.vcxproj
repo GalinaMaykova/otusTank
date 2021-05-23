@@ -76,6 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link />
   </ItemDefinitionGroup>
@@ -123,6 +124,7 @@
     <ClInclude Include="command.h" />
     <ClInclude Include="move.h" />
     <ClInclude Include="myVector.h" />
+    <ClInclude Include="rotate.h" />
     <ClInclude Include="uobject.h" />
   </ItemGroup>
   <ItemGroup>
