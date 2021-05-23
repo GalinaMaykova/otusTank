@@ -117,8 +117,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="test_move.cpp" />
     <ClCompile Include="Tanks.cpp" />
+    <ClCompile Include="test_rotate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="command.h" />

@@ -16,15 +16,4 @@ public:
         m_uobj.insert(std::make_pair(key, ptr));
     }
     std::map<std::string, std::any> m_uobj;
-
-
-    //void* getObj(std::string key) 
-    //{
-    //    return m_uobj.at(key);
-    //}
-    //void setObj(std::string key, void* ptr)
-    //{
-    //    m_uobj.insert(std::make_pair(key, ptr));
-    //}
-    //std::map<std::string, void*> m_uobj;
 };

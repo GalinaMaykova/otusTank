@@ -10,7 +10,7 @@ public:
     virtual void setPosition(myVector newPos) = 0;
 
     virtual myVector getVelocity() = 0;
-    virtual ~IMovable() { std::cout << "IMovableDestructor" << std::endl; };
+    virtual ~IMovable() { /*std::cout << "IMovableDestructor" << std::endl;*/ };
 };
 
 
@@ -46,7 +46,20 @@ public:
     }
     myVector getVelocity()
     {
-        return std::any_cast<myVector>(m_obj.getObj("Velosity"));
+        try
+        {
+            return std::any_cast<myVector>(m_obj.getObj("Velosity"));
+        }
+        catch (std::out_of_range& ex)
+        {
+            std::cout << "FATAL_ERR: no velosity in MovableObject, ex.what() = " << ex.what() << std::endl;
+            throw std::runtime_error("not position");
+        }
+        catch (std::bad_any_cast& ex)
+        {
+            std::cout << "FATAL_ERR: bad type velosity in MovableObject, ex.what() = " << ex.what() << std::endl;
+            throw std::runtime_error("not position");
+        }
     }
 
 private:

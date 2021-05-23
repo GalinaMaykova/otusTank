@@ -12,8 +12,10 @@ public:
     virtual void setDirection(int newPos) = 0;
 
     virtual int  getAngularVelocity() = 0;
-    virtual int  getMaxDirections() = 0;
-    virtual ~IRotable() { std::cout << "IRotableDestructor" << std::endl; };
+  //  virtual int  getMaxDirections() = 0; // max_direction пока пусть будет 360, если позволить его менять на любое, то нужна дргуая логика в execute.
+                                           // т.к например max_direction пользователь установит в 45, тогда при повороте на 50 градусов игрок 
+                                           // будет явно удивлен повороту на 5 градусов. в будущем скорре надо добавить диапазон возможных поворотов к текущему положению.
+    virtual ~IRotable() { /*std::cout << "IRotableDestructor" << std::endl;*/ };
 };
 
 
@@ -26,8 +28,20 @@ public:
 
     int getDirection()
     {
-        // хорошо бы обернуть try/catch
-        return std::any_cast<int>(m_obj.getObj("Direction"));
+        try
+        {
+            return std::any_cast<int>(m_obj.getObj("Direction"));
+        }
+        catch (std::out_of_range& ex)
+        {
+            std::cout << "FATAL_ERR: no direction in MovableObject, ex.what() = " << ex.what() << std::endl;
+            throw std::runtime_error("not direction");
+        }
+        catch (std::bad_any_cast& ex)
+        {
+            std::cout << "FATAL_ERR: bad type direction in MovableObject, ex.what() = " << ex.what() << std::endl;
+            throw std::runtime_error("not direction");
+        }
     }
 
     void setDirection(int value)
@@ -36,11 +50,20 @@ public:
     }
     int getAngularVelocity()
     {
-        return std::any_cast<int>(m_obj.getObj("AngularValocity"));
-    }
-    int getMaxDirections()
-    {
-        return std::any_cast<int>(m_obj.getObj("MaxDirections"));
+        try
+        {
+            return std::any_cast<int>(m_obj.getObj("AngularValocity"));
+        }
+        catch (std::out_of_range& ex)
+        {
+            std::cout << "FATAL_ERR: no angularValocity in MovableObject, ex.what() = " << ex.what() << std::endl;
+            throw std::runtime_error("not angularValocity");
+        }
+        catch (std::bad_any_cast& ex)
+        {
+            std::cout << "FATAL_ERR: bad type angularValocity in MovableObject, ex.what() = " << ex.what() << std::endl;
+            throw std::runtime_error("not angularValocity");
+        }
     }
 
 private:
@@ -55,7 +78,7 @@ public:
 
     void execute()
     {
-        int temp = (m_rotable.getDirection() + m_rotable.getAngularVelocity()) % m_rotable.getMaxDirections();
+        int temp = (m_rotable.getDirection() + m_rotable.getAngularVelocity()) % 360;
         m_rotable.setDirection(temp);
     }
 
