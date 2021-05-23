@@ -52,16 +52,16 @@ public:
     {
         try
         {
-            return std::any_cast<int>(m_obj.getObj("AngularValocity"));
+            return std::any_cast<int>(m_obj.getObj("AngularVelocity"));
         }
         catch (std::out_of_range& ex)
         {
-            std::cout << "FATAL_ERR: no angularValocity in MovableObject, ex.what() = " << ex.what() << std::endl;
+            std::cout << "FATAL_ERR: no angularVelocity in MovableObject, ex.what() = " << ex.what() << std::endl;
             throw std::runtime_error("not angularValocity");
         }
         catch (std::bad_any_cast& ex)
         {
-            std::cout << "FATAL_ERR: bad type angularValocity in MovableObject, ex.what() = " << ex.what() << std::endl;
+            std::cout << "FATAL_ERR: bad type angularVelocity in MovableObject, ex.what() = " << ex.what() << std::endl;
             throw std::runtime_error("not angularValocity");
         }
     }

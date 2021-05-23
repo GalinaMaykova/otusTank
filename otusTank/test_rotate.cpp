@@ -50,3 +50,25 @@ TEST(TANK_test, test_minus_change_direction)
     rotateCmd.execute();
     ASSERT_EQ(-10, mock_rotate.getDirection());
 }
+
+
+TEST(TANK_test, test_no_direction)
+{
+    int avel = 370;
+    UObject tank;
+    tank.setObj("AngularVelocity", avel);
+    RotableAdapter rAdapter(tank);
+    RotateCommand rotateCmd(rAdapter);
+    ASSERT_THROW(rotateCmd.execute(), std::runtime_error);
+}
+
+TEST(TANK_test, test_no_angularVelocity)
+{
+    int dir = 45;
+    UObject tank;
+    tank.setObj("Direction", dir);
+    RotableAdapter rAdapter(tank);
+    RotateCommand rotateCmd(rAdapter);
+    ASSERT_THROW(rotateCmd.execute(), std::runtime_error);
+}
+
