@@ -2,7 +2,7 @@
 
 #include "myVector.h"
 #include "uobject.h"
-
+#include <iostream>
 class IMovable
 {
 public:
@@ -23,7 +23,21 @@ public:
 
     myVector getPosition()
     {
-        return  std::any_cast<myVector>(m_obj.getObj("Position"));
+        try 
+        {
+            return  std::any_cast<myVector>(m_obj.getObj("Position"));
+        }
+        //getObj - может выбросить исключение отсутствие объекта, каст вектора - исключение несоответствия типов
+        catch(std::out_of_range& ex)
+        { 
+            std::cout << "FATAL_ERR: no position in MovableObject, ex.what() = "  << ex.what() << std::endl;
+            throw std::runtime_error("not position");
+        }
+        catch(std::bad_any_cast& ex)
+        {
+            std::cout << "FATAL_ERR: bad type position in MovableObject, ex.what() = " << ex.what() << std::endl;
+            throw std::runtime_error("not position");
+        }
     }
 
     void setPosition(myVector value)

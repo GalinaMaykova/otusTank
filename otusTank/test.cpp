@@ -9,13 +9,10 @@
 #include "rotate.h"
 
 #include "gmock\gmock.h"
-class MockMOVE : public IMovable {
+class MockMOVE : public IMovable 
+{
 public:
-    // MOCK_METHOD(myVector, getPosition, ());
-    // MOCK_METHOD(void, setPosition, (myVector m));
-    // MOCK_METHOD(myVector, getPosition, ());
     MockMOVE(myVector& position, myVector& velocity) : m_position(position), m_velocity(velocity) {}
-
     myVector getPosition()
     {
         return m_position;
@@ -32,19 +29,47 @@ public:
     myVector& m_velocity;
 };
 
-TEST(test_case_name, test_name)
-{     
-        std::vector<int> p(2);
-        p[0] = 2;
-        p[1] = 7;
-        myVector pos(p);
-        std::vector<int> v(2);
-        v[0] = 1;
-        v[1] = 4;
-        myVector vel(v);
-        MockMOVE mock_mover(pos, vel);
-        MoveCommand moveCmd(mock_mover);
-        moveCmd.execute();
-        ASSERT_EQ(4, mock_mover.getPosition().m_body[0]);
-        ASSERT_EQ(11, mock_mover.getPosition().m_body[1]);
+TEST(TANK_test, test_change_position)
+{
+    std::vector<int> p(2);
+    p[0] = 12;
+    p[1] = 5;
+    myVector pos(p);
+    std::vector<int> v(2);
+    v[0] = -7;
+    v[1] = 3;
+    myVector vel(v);
+    MockMOVE mock_mover(pos, vel);
+    MoveCommand moveCmd(mock_mover);
+    moveCmd.execute();
+    ASSERT_EQ(5, mock_mover.getPosition().m_body[0]);
+    ASSERT_EQ(8, mock_mover.getPosition().m_body[1]);
 }
+
+//
+//class MockMOVEnotPos : public MockMOVE
+//{
+//public:
+//    MockMOVEnotPos(myVector& position, myVector& velocity) : MockMOVE(position, velocity)
+//    {}
+//    myVector getPosition()
+//    {
+//        throw std::runtime_error("not position");
+//    }
+//};
+
+TEST(TANK_test, test_no_position)
+//как с помощью мок-объекта проверить реальную функциональность MovableAdapter и бросания им исключения?
+{     
+        std::vector<int> v(2);
+        v[0] = -7;
+        v[1] = 3;
+        myVector vel(v);
+        UObject tank;
+        tank.setObj("Velosity", vel);
+        MovableAdapter mAdapter(tank);
+        MoveCommand moveCmd(mAdapter);
+        ASSERT_THROW(moveCmd.execute(), std::runtime_error);
+
+}
+
