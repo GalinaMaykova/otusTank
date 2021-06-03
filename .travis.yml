@@ -21,5 +21,6 @@ script:
 - conan install .
 - cmake .
 - make
+
 - ctest -C Debug
 - ctest -C Release
