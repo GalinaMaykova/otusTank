@@ -117,12 +117,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="movableAdapter.cpp" />
+    <ClCompile Include="moveCommand.cpp" />
+    <ClCompile Include="myVector.cpp" />
+    <ClCompile Include="rotableAdapter.cpp" />
+    <ClCompile Include="rotateCommand.cpp" />
+    <ClCompile Include="runner.cpp" />
+    <ClCompile Include="test_runner.cpp" />
     <ClCompile Include="test_move.cpp" />
     <ClCompile Include="Tanks.cpp" />
     <ClCompile Include="test_rotate.cpp" />
+    <ClCompile Include="uobject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="command.h" />
+    <ClInclude Include="movableAdapter.h" />
+    <ClInclude Include="moveCommand.h" />
+    <ClInclude Include="myTqueue.h" />
+    <ClInclude Include="rotableAdapter.h" />
+    <ClInclude Include="rotateCommand.h" />
+    <ClInclude Include="runner.h" />
     <ClInclude Include="move.h" />
     <ClInclude Include="myVector.h" />
     <ClInclude Include="rotate.h" />

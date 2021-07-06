@@ -1,12 +1,14 @@
 
-#include <map>;
-#include <any>;
+#include <map>
+#include <any>
 #include <iostream>
 #include "command.h"
 #include "move.h"
 #include "myVector.h"
 #include "uobject.h"
 #include "rotate.h"
+#include "movableAdapter.h"
+#include "moveCommand.h"
 
 #include "gmock\gmock.h"
 class MockMOVE : public IMovable 

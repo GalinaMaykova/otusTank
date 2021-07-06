@@ -1,6 +1,9 @@
 ﻿
+#include "runner.h"
+
 #include <iostream>
 #include "gmock\gmock.h"
+
 
 int main(int argc, char** argv)
 {
