@@ -117,12 +117,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="burnFuelAdapter.cpp" />
+    <ClCompile Include="ChangeVelocityAdapter.cpp" />
+    <ClCompile Include="changeVelocityCommand.cpp" />
+    <ClCompile Include="checkFuelCommand.cpp" />
     <ClCompile Include="movableAdapter.cpp" />
     <ClCompile Include="moveCommand.cpp" />
+    <ClCompile Include="MoveMacroСommand.cpp" />
     <ClCompile Include="myVector.cpp" />
     <ClCompile Include="rotableAdapter.cpp" />
     <ClCompile Include="rotateCommand.cpp" />
+    <ClCompile Include="RotateMacroСommand.cpp" />
     <ClCompile Include="runner.cpp" />
+    <ClCompile Include="BurnFuelCommand.cpp" />
+    <ClCompile Include="test_changeVelocity.cpp" />
+    <ClCompile Include="test_fuel.cpp" />
     <ClCompile Include="test_runner.cpp" />
     <ClCompile Include="test_move.cpp" />
     <ClCompile Include="Tanks.cpp" />
@@ -130,12 +139,23 @@
     <ClCompile Include="uobject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="burnFuelAdapter.h" />
+    <ClInclude Include="burnFuel.h" />
+    <ClInclude Include="changeVelocity.h" />
+    <ClInclude Include="ChangeVelocityAdapter.h" />
     <ClInclude Include="command.h" />
+    <ClInclude Include="checkFuelCommand.h" />
+    <ClInclude Include="BurnFuelCommand.h" />
+    <ClInclude Include="changeVelocityCommand.h" />
+    <ClInclude Include="MacroCommand.h" />
     <ClInclude Include="movableAdapter.h" />
     <ClInclude Include="moveCommand.h" />
+    <ClInclude Include="MoveMacroСommand.h" />
+    <ClInclude Include="myException.h" />
     <ClInclude Include="myTqueue.h" />
     <ClInclude Include="rotableAdapter.h" />
     <ClInclude Include="rotateCommand.h" />
+    <ClInclude Include="RotateMacroСommand.h" />
     <ClInclude Include="runner.h" />
     <ClInclude Include="move.h" />
     <ClInclude Include="myVector.h" />

@@ -13,4 +13,16 @@ myVector myVector::operator+(const myVector& v1) const
     }
     return newBody;
 }
+                             
+myVector myVector::rotate(const int angle) const
+{
+    std::vector<int> vec(2);
+    const double angleInRadian = angle * 3.1415926535 / 180;
+
+ 
+    vec[0] = static_cast<int>(round(m_body[0] * cos(angleInRadian) - m_body[1] * sin(angleInRadian)));
+    vec[1] = static_cast<int>(round(m_body[0] * sin(angleInRadian) + m_body[1] * cos(angleInRadian)));
+    myVector answer(vec);
+    return answer;
+}
 

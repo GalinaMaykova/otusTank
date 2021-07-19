@@ -14,3 +14,5 @@ public:
     virtual myVector getVelocity() = 0;
     virtual ~IMovable() { /*std::cout << "IMovableDestructor" << std::endl;*/ };
 };
+
+
